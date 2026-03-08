@@ -1,68 +1,105 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  --color-orange: #FDBA74;
+  --color-border-switch: #f7b066;
+  --color-gray: #bdbdbd;
+  --text_color_sidebar: #EDF2F7;
+  --bg_sidebar: #2D3748;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* --- Estilos para el Sidebar --- */
+
+.text-sidebar {
+  color: var(--text_color_sidebar);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.bg-sidebar {
+  background-color: var(--bg_sidebar);
+}
+
+.bg-sidebar a:hover {
+  color: var(--color-orange);
+}
+
+.nav-link:focus,
+.nav-link:hover {
+  color: var(--color-orange) !important;
+}
+
+/* --- Estilos para el Switch Ámbar --- */
+
+/* Cuando el switch está DESACTIVADO pero tiene el FOCO */
+.form-switch .form-check-input:focus {
+  /* Cambiamos el color del círculo en el SVG (el parámetro fill) */
+  /* Aquí usamos un gris suave o una versión muy clara de tu naranja */
+  --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e") !important;
+}
+
+/* Cuando el switch está ACTIVADO y tiene el FOCO */
+.form-switch .form-check-input:checked:focus {
+  /* Mantenemos el círculo blanco pero aseguramos que el fondo sea naranja */
+  --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e") !important;
+}
+
+/* Cuando el switch está ACTIVADO (Checked) */
+.form-check-input:checked {
+  background-color: var(--color-orange) !important;
+  border-color: var(--color-orange) !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e") !important;
+}
+
+/* Color cuando está INACTIVO */
+.form-check-input {
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  background-color: #E5E7EB;
+  border-color: #D1D5DB;
+  height: 1.5em;
+  width: 3em !important;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* El resplandor (focus) al hacer clic o usar teclado */
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.25rem rgba(var(--color-orange), 0.25) !important;
+  border-color: transparent !important;
+}
+
+/* Estilo de la etiqueta de texto */
+.form-check-label {
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: 0.7rem;
+  transition: color 0.3s ease;
+}
+
+/* --- Estilos para el Acordeón --- */
+
+/* 1. Quitamos la imagen de fondo azul por defecto de Bootstrap */
+.accordion-button::after {
+  background-image: none !important;
+  content: "\F282";
+  font-family: "bootstrap-icons";
+  font-size: 1rem;
+  transition: transform 0.2s ease-in-out;
+  color: inherit;
+}
+
+/* 2. Rotamos la flecha cuando el acordeón está abierto */
+.accordion-button:not(.collapsed)::after {
+  transform: rotate(180deg);
+}
+
+/* 3. Aseguramos que el color del botón sea consistente */
+.accordion-button {
+  color: #EDF2F7 !important;
+}
+
+.accordion-button:not(.collapsed) {
+  color: var(--color-orange) !important;
+  background-color: transparent !important;
 }
