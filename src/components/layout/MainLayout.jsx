@@ -2,6 +2,13 @@ import { Link, Outlet } from 'react-router';
 import { Sidebar } from '@/components/Sidebar';
 import { useCloseOffcanvas } from '@/hooks/useCloseOffcanvas';
 
+/**
+ * Componente de diseño principal de la aplicación.
+ * Gestiona la estructura de Sidebar (escritorio) y Navbar + Offcanvas (móvil).
+ * También se encarga de cerrar el menú móvil automáticamente al navegar.
+ * 
+ * @returns {JSX.Element} El diseño base con espacios para la navegación y el contenido principal.
+ */
 export const MainLayout = () => {
     const ID_OFFCANVAS = 'offcanvasSidebar';
 

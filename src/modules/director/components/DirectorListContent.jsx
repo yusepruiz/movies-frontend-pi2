@@ -2,10 +2,12 @@ import { use } from "react";
 import { Link } from "react-router";
 
 /**
- * Componente que consume la promesa de los directores
+ * Componente que consume una promesa de directores y renderiza el listado.
+ * Utiliza el hook `use` de React 19 para manejar la asincronía de la promesa.
  * 
- * @param {Promise} directorsPromise - Promesa de los directores
- * @returns {JSX.Element}
+ * @param {Object} props - Propiedades del componente.
+ * @param {Promise<Array|Object>} props.directorsPromise - Promesa que resuelve a la lista de directores.
+ * @returns {JSX.Element} El listado de directores o un mensaje si no hay registros.
  */
 export const DirectorListContent = ({ directorsPromise }) => {
     const data = use(directorsPromise);

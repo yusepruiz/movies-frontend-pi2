@@ -1,8 +1,8 @@
 import { Suspense } from "react";
+import { Link } from "react-router";
 
 import { directorServices } from "@/modules/director/services/directorServices";
 import { DirectorListContent } from "@/modules/director/components/DirectorListContent";
-import { Link } from "react-router";
 
 /**
  * Componente principal de la página de directores

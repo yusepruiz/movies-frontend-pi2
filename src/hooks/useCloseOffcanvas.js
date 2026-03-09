@@ -1,6 +1,12 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router';
 
+/**
+ * Hook personalizado para cerrar automáticamente un elemento Offcanvas de Bootstrap.
+ * Se dispara cada vez que la ubicación (ruta) cambia.
+ * 
+ * @param {string} elementId - El ID del elemento DOM que representa el Offcanvas.
+ */
 export const useCloseOffcanvas = (elementId) => {
     const location = useLocation();
 

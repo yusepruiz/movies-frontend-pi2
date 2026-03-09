@@ -1,6 +1,14 @@
 import { Link } from 'react-router';
 import { menuConfig } from '@/routes/menuConfig';
 
+/**
+ * Componente de barra lateral que renderiza el menú de navegación.
+ * Soporta tanto el diseño de escritorio como el móvil (offcanvas).
+ * 
+ * @param {Object} props - Propiedades del componente.
+ * @param {boolean} [props.isMobile=false] - Indica si el sidebar se está renderizando dentro de un Offcanvas móvil.
+ * @returns {JSX.Element} El componente de Sidebar renderizado.
+ */
 export const Sidebar = ({ isMobile = false }) => {
 
   return (
