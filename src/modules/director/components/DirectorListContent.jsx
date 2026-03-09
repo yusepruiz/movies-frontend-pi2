@@ -19,6 +19,9 @@ export const DirectorListContent = ({ directorsPromise }) => {
                 <li key={director.id} className="list-group-item d-flex align-items-center">
                     <span className="badge bg-primary rounded-pill me-3">ID: {director.id}</span>
                     {director.name}
+                    <div className="ms-auto">
+                        <button className="btn btn-sm btn-warning me-2 px-2 py-1" title="Editar"><i className="bi bi-pencil me-2"></i>Editar</button>
+                    </div>
                 </li>
             ))}
         </ul>
