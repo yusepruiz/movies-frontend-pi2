@@ -1,10 +1,11 @@
 import { Link, useParams } from "react-router";
 import { useState } from "react";
+import { STATE_COLORS } from "@/constants/constants";
 
-export const DirectorForm = ({ title, action, loading, state, actionText, procesingText }) => {
+export const DirectorForm = ({ title, action, loading, state, actionText, procesingText, initialData = { name: "", state: false } }) => {
     const { id } = useParams();
-    const [isActive, setIsActive] = useState(false);
-    const [colorIsActive, setColorIsActive] = useState("#6B7280");
+    const [isActive, setIsActive] = useState(initialData.state);
+    const [colorIsActive, setColorIsActive] = useState(initialData.state ? STATE_COLORS.ACTIVE : STATE_COLORS.INACTIVE);
 
     return (
         <div className="container mt-4">
@@ -22,6 +23,7 @@ export const DirectorForm = ({ title, action, loading, state, actionText, proces
                             type="text"
                             placeholder="Nombre del Director"
                             className="form-control"
+                            defaultValue={initialData.name}
                             required
                         />
                     </div>
@@ -34,9 +36,10 @@ export const DirectorForm = ({ title, action, loading, state, actionText, proces
                             value="true"
                             role="switch"
                             id="switchDirector"
+                            defaultChecked={initialData.state}
                             onChange={e => {
                                 setIsActive(e.target.checked);
-                                setColorIsActive(e.target.checked ? "#D97706" : "#6B7280");
+                                setColorIsActive(e.target.checked ? STATE_COLORS.ACTIVE : STATE_COLORS.INACTIVE);
                             }}
                         />
                         <label
@@ -70,7 +73,7 @@ export const DirectorForm = ({ title, action, loading, state, actionText, proces
                 {state.success && <p className="text-success small mt-2">¡Operación realizada con éxito!</p>}
             </form>
 
-            <Link to="/director" className="text-decoration-none text-primary mt-3 d-inline-block">Volver a la lista de directores</Link>
+            <Link to="/director" className="text-decoration-none text-primary mt-3 d-inline-block fw-medium fst-italic">Volver a la lista de directores</Link>
         </div>
     );
 }
