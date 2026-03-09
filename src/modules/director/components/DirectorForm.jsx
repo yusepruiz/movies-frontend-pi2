@@ -1,59 +1,70 @@
-import { Link, useParams } from "react-router";
-import { useState } from "react";
-import { STATE_COLORS } from "@/constants/constants";
+import { Link } from "react-router";
 
-export const DirectorForm = ({ title, action, loading, state, actionText, procesingText, initialData = { name: "", state: false } }) => {
-    const { id } = useParams();
-    const [isActive, setIsActive] = useState(initialData.state);
-    const [colorIsActive, setColorIsActive] = useState(initialData.state ? STATE_COLORS.ACTIVE : STATE_COLORS.INACTIVE);
+import { useDirectorForm } from "@/modules/director/hooks/useDirectorForm";
+
+export const DirectorForm = () => {
+
+    const {
+        name,
+        setName,
+        isActive,
+        colorIsActive,
+        toggleState,
+        loading,
+        handleSubmit,
+        isEditMode,
+        responseState
+    } = useDirectorForm();
 
     return (
         <div className="container mt-4">
-            <h3 className="mb-4">{title}</h3>
 
-            {/* Contenedor principal del formulario con Flex Columna */}
-            <form action={action} className="d-flex flex-column gap-3">
-                <input type="hidden" name="id" value={id} />
+            <h3 className="mb-4">
+                {isEditMode ? "Actualizar Director" : "Crear Director"}
+            </h3>
 
-                {/* Fila superior: Input de texto y Switch de estado */}
+            <form onSubmit={handleSubmit} className="d-flex flex-column gap-3">
+
                 <div className="d-flex flex-column flex-md-row align-items-md-center gap-3 gap-md-4">
+
                     <div className="flex-grow-1">
+
                         <input
                             name="name"
                             type="text"
-                            placeholder="Nombre del Director"
                             className="form-control"
-                            defaultValue={initialData.name}
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                             required
                         />
+
                     </div>
 
                     <div className="form-check form-switch d-flex align-items-center">
+
                         <input
                             className="form-check-input"
-                            name="state"
                             type="checkbox"
-                            value="true"
                             role="switch"
                             id="switchDirector"
-                            defaultChecked={initialData.state}
-                            onChange={e => {
-                                setIsActive(e.target.checked);
-                                setColorIsActive(e.target.checked ? STATE_COLORS.ACTIVE : STATE_COLORS.INACTIVE);
-                            }}
+                            checked={isActive}
+                            onChange={(e) => toggleState(e.target.checked)}
                         />
+
                         <label
                             className="form-check-label fw-bold"
                             htmlFor="switchDirector"
-                            style={{ color: colorIsActive, minWidth: '80px' }}
+                            style={{ color: colorIsActive, minWidth: "80px" }}
                         >
                             {isActive ? "Activo" : "Inactivo"}
                         </label>
+
                     </div>
+
                 </div>
 
-                {/* Fila inferior: Botón alineado a la derecha */}
                 <div className="d-flex justify-content-end mt-2">
+
                     <button
                         type="submit"
                         disabled={loading}
@@ -61,19 +72,39 @@ export const DirectorForm = ({ title, action, loading, state, actionText, proces
                     >
                         {loading ? (
                             <>
-                                <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                                {procesingText}
+                                <span className="spinner-border spinner-border-sm me-2"></span>
+                                {isEditMode ? "Actualizando..." : "Creando..."}
                             </>
-                        ) : actionText}
+                        ) : (
+                            isEditMode ? "Actualizar" : "Crear"
+                        )}
                     </button>
+
                 </div>
 
                 {/* Mensajes de feedback */}
-                {state.error && <p className="text-danger small mt-2">{state.error}</p>}
-                {state.success && <p className="text-success small mt-2">¡Operación realizada con éxito!</p>}
+                {responseState.success && (
+                    <div className="alert alert-success">
+                        {responseState.message}
+                    </div>
+                )}
+
+                {responseState.error && (
+                    <div className="alert alert-danger">
+                        {responseState.error}
+                    </div>
+                )}
+
+
             </form>
 
-            <Link to="/director" className="text-decoration-none text-primary mt-3 d-inline-block fw-medium fst-italic">Volver a la lista de directores</Link>
+            <Link
+                to="/director"
+                className="text-decoration-none text-primary mt-3 d-inline-block fw-medium fst-italic"
+            >
+                Volver a la lista de directores
+            </Link>
+
         </div>
     );
-}
+};
