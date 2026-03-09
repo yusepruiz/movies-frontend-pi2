@@ -1,9 +1,10 @@
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { useState } from "react";
 
 export const DirectorForm = ({ title, action, loading, state, actionText, procesingText }) => {
     const { id } = useParams();
     const [isActive, setIsActive] = useState(false);
+    const [colorIsActive, setColorIsActive] = useState("#6B7280");
 
     return (
         <div className="container mt-4">
@@ -33,12 +34,15 @@ export const DirectorForm = ({ title, action, loading, state, actionText, proces
                             value="true"
                             role="switch"
                             id="switchDirector"
-                            onChange={e => setIsActive(e.target.checked)}
+                            onChange={e => {
+                                setIsActive(e.target.checked);
+                                setColorIsActive(e.target.checked ? "#D97706" : "#6B7280");
+                            }}
                         />
                         <label
                             className="form-check-label fw-bold"
                             htmlFor="switchDirector"
-                            style={{ color: isActive ? '#D97706' : '#6B7280', minWidth: '80px' }}
+                            style={{ color: colorIsActive, minWidth: '80px' }}
                         >
                             {isActive ? "Activo" : "Inactivo"}
                         </label>
@@ -50,7 +54,7 @@ export const DirectorForm = ({ title, action, loading, state, actionText, proces
                     <button
                         type="submit"
                         disabled={loading}
-                        className="btn btn-primary px-4 py-2"
+                        className="btn btn-sm btn-primary px-4 py-2"
                     >
                         {loading ? (
                             <>
@@ -65,6 +69,8 @@ export const DirectorForm = ({ title, action, loading, state, actionText, proces
                 {state.error && <p className="text-danger small mt-2">{state.error}</p>}
                 {state.success && <p className="text-success small mt-2">¡Operación realizada con éxito!</p>}
             </form>
+
+            <Link to="/director" className="text-decoration-none text-primary mt-3 d-inline-block">Volver a la lista de directores</Link>
         </div>
     );
 }
