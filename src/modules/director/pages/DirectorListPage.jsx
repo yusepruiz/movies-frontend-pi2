@@ -2,6 +2,7 @@ import { Suspense } from "react";
 
 import { directorServices } from "@/modules/director/services/directorServices";
 import { DirectorListContent } from "@/modules/director/components/DirectorListContent";
+import { Link } from "react-router";
 
 /**
  * Componente principal de la página de directores
@@ -26,6 +27,9 @@ export const DirectorListPage = () => {
                     <div className="spinner-border ms-auto text-primary" role="status" aria-hidden="true"></div>
                 </div>
             }>
+                <div className="d-flex justify-content-end">
+                    <Link to="/director/create" className="btn btn-sm btn-primary me-4 px-2 py-1" title="Crear"><i className="bi bi-plus me-2"></i>Crear</Link>
+                </div>
                 <DirectorListContent directorsPromise={directorsPromise} />
             </Suspense>
         </div>
