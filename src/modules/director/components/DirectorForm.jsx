@@ -14,7 +14,7 @@ export const DirectorForm = ({ title, action, loading, state, actionText, proces
                 <input type="hidden" name="id" value={id} />
 
                 {/* Fila superior: Input de texto y Switch de estado */}
-                <div className="d-flex align-items-center gap-4">
+                <div className="d-flex flex-column flex-md-row align-items-md-center gap-3 gap-md-4">
                     <div className="flex-grow-1">
                         <input
                             name="name"

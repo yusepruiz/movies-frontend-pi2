@@ -103,3 +103,28 @@ body {
   color: var(--color-orange) !important;
   background-color: transparent !important;
 }
+
+/* --- Estilos Responsivos --- */
+
+/* Ajustes para Móvil (< 992px) */
+@media (max-width: 991.98px) {
+  main {
+    padding: 1rem !important; /* Menos espacio en pantallas pequeñas */
+    min-height: calc(100vh - 56px); /* Restamos la altura de la navbar móvil */
+  }
+
+  .offcanvas {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .card {
+    border-radius: 0.5rem; /* Bordes un poco más cerrados en móvil */
+  }
+}
+
+/* Ajuste para altura en móviles (Evita el salto de la barra de direcciones) */
+@supports (height: 100dvh) {
+  .vh-100 {
+    height: 100dvh !important;
+  }
+}
