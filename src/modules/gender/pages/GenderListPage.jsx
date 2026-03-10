@@ -1,3 +1,7 @@
+import { genderServices } from "@/modules/gender/services/genderServices";
+import { ListLayout } from "@/components/layout/ListLayout";
+import { GenericList } from "@/components/common/GenericList";
+
 /**
  * Página principal del módulo de Géneros.
  * Muestra el listado de todos los géneros registrados.

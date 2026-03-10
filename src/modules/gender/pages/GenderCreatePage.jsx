@@ -1,3 +1,5 @@
+import { GenderForm } from "@/modules/gender/components/GenderForm";
+
 /**
  * Página para la creación de un nuevo género.
  * Renderiza el componente GenderForm en modo creación.
