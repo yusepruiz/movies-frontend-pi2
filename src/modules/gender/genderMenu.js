@@ -1,3 +1,6 @@
+/**
+ * Configuración del menú para el módulo de Géneros.
+ */
 export const genderMenu = {
     title: "Géneros",
     id: "menuGender",

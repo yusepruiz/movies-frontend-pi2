@@ -1,3 +1,13 @@
+/**
+ * Componente de interruptor (switch) basado en checkbox de Bootstrap.
+ * 
+ * @param {Object} props - Propiedades del componente.
+ * @param {string} props.id - ID único para el input y label.
+ * @param {boolean} props.isActive - Estado actual del switch.
+ * @param {Function} props.onChange - Función que recibe el nuevo valor booleano.
+ * @param {string} props.colorIsActive - Color hexadecimal para el texto del estado.
+ * @returns {JSX.Element} El switch renderizado.
+ */
 export const FormSwitch = ({ id, isActive, onChange, colorIsActive }) => (
     <div className="form-check form-switch d-flex align-items-center">
         <input

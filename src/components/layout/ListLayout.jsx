@@ -1,6 +1,17 @@
 import { Suspense } from "react";
 import { Link } from "react-router";
 
+/**
+ * Componente de diseño para páginas de listado de recursos.
+ * Incluye un encabezado con título, una línea divisoria y un botón de creación,
+ * envolviendo el contenido en un Suspense con fallback de carga.
+ * 
+ * @param {Object} props - Propiedades del componente.
+ * @param {string} props.title - Título de la página de listado.
+ * @param {string} props.createLink - Ruta para el botón de creación de nuevo recurso.
+ * @param {React.ReactNode} props.children - El contenido de la lista (generalmente GenericList).
+ * @returns {JSX.Element} El diseño de listado renderizado.
+ */
 export const ListLayout = ({ title, createLink, children }) => {
     return (
         <div className="container mt-4">
@@ -22,7 +33,7 @@ export const ListLayout = ({ title, createLink, children }) => {
                         <i className="bi bi-plus me-2"></i>Crear
                     </Link>
                 </div>
-                
+
                 {/* Acá se renderiza la lista */}
                 {children}
             </Suspense>

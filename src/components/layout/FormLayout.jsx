@@ -1,5 +1,20 @@
 import { Link } from "react-router";
 
+/**
+ * Componente de diseño para formularios estandarizados.
+ * Incluye título, botones de acción y manejo visual de estados de respuesta (éxito/error).
+ * 
+ * @param {Object} props - Propiedades del componente.
+ * @param {string} props.title - Título del formulario.
+ * @param {Function} props.onSubmit - Función manejadora del envío del formulario.
+ * @param {boolean} props.loading - Indica si el formulario está en proceso de envío.
+ * @param {boolean} props.isEditMode - Indica si es un formulario de edición o creación.
+ * @param {Object} props.responseState - Estado de la respuesta (success, message, error).
+ * @param {React.ReactNode} props.children - Campos del formulario.
+ * @param {string} props.backTo - Ruta para el enlace de "Volver".
+ * @param {string} props.text - Texto descriptivo para el enlace de volver (ej: "directores").
+ * @returns {JSX.Element} El diseño de formulario renderizado.
+ */
 export const FormLayout = ({ title, onSubmit, loading, isEditMode, responseState, children, backTo, text }) => (
     <div className="container mt-4">
         <h3 className="mb-4">{title}</h3>

@@ -1,3 +1,6 @@
+/**
+ * Configuración del menú para el módulo de Directores.
+ */
 export const directorMenu = {
     title: "Directores",
     id: "menuDirector",

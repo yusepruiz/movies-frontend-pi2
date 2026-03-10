@@ -3,6 +3,12 @@ import { FormInput } from "@/components/common/FormInput";
 import { FormSwitch } from "@/components/common/FormSwitch";
 import { useDirectorForm } from "@/modules/director/hooks/useDirectorForm";
 
+/**
+ * Componente de formulario para la creación y actualización de directores.
+ * Utiliza el hook `useDirectorForm` para centralizar la lógica y el estado.
+ * 
+ * @returns {JSX.Element} El formulario de directores renderizado.
+ */
 export const DirectorForm = () => {
     const { name, setName, isActive, colorIsActive, toggleState, loading, handleSubmit, isEditMode, responseState } = useDirectorForm();
 

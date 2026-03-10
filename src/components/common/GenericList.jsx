@@ -1,6 +1,17 @@
 import { use } from "react";
 import { Link } from "react-router";
 
+/**
+ * Componente de lista genérica que maneja la carga de datos asíncronos y su visualización.
+ * Automáticamente desempaqueta la promesa y renderiza cada ítem con un botón de edición.
+ * 
+ * @param {Object} props - Propiedades del componente.
+ * @param {Promise<Array|Object>} props.promise - Promesa que resuelve a los datos a listar.
+ * @param {string} [props.emptyMessage="No hay registros."] - Mensaje a mostrar si la lista está vacía.
+ * @param {string} props.resourcePath - La base de la ruta para el enlace de edición (ej: 'director').
+ * @param {Function} [props.renderItem] - Función opcional para personalizar el renderizado de cada ítem.
+ * @returns {JSX.Element} La lista renderizada o un mensaje de vacío.
+ */
 export const GenericList = ({
     promise,
     emptyMessage = "No hay registros.",

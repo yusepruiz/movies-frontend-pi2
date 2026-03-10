@@ -1,9 +1,9 @@
-import { FormLayout } from "@/components/layout/FormLayout";
-import { FormInput } from "@/components/common/FormInput";
-import { FormSwitch } from "@/components/common/FormSwitch";
-import { FormTextArea } from "@/components/common/FormTextArea";
-import { useGenderForm } from "@/modules/gender/hooks/useGenderForm";
-
+/**
+ * Componente de formulario para la creación y actualización de géneros.
+ * Utiliza el hook `useGenderForm` para centralizar la lógica y el estado.
+ * 
+ * @returns {JSX.Element} El formulario de géneros renderizado.
+ */
 export const GenderForm = () => {
     const {
         name, setName, description, setDescription, isActive,
