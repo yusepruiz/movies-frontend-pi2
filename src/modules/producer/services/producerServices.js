@@ -1,0 +1,7 @@
+import { createApiService } from "@/services/apiFactory";
+
+/**
+ * Servicios para la gestión de productores de películas.
+ * Utiliza apiFactory para proporcionar métodos CRUD.
+ */
+export const producerServices = createApiService("producer");
