@@ -2,6 +2,12 @@ import { Link } from "react-router";
 
 import { useDirectorForm } from "@/modules/director/hooks/useDirectorForm";
 
+/**
+ * Componente de formulario para la creación y actualización de directores.
+ * Utiliza el hook `useDirectorForm` para gestionar todo el estado y la lógica.
+ * 
+ * @returns {JSX.Element} El formulario de directores renderizado.
+ */
 export const DirectorForm = () => {
 
     const {
