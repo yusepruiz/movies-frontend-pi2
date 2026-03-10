@@ -12,13 +12,13 @@ export const ProducerListPage = () => {
 
     return (
         <ListLayout
-            title="Listado de Géneros"
+            title="Listado de Productores"
             createLink="/producer/create"
         >
             <GenericList
                 promise={producersPromise}
-                resourcePath="gender"
-                emptyMessage="No hay géneros registrados."
+                resourcePath="producer"
+                emptyMessage="No hay productores registrados."
             />
         </ListLayout>
     );
