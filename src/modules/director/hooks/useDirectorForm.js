@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 
 import { STATE_COLORS } from "@/constants/constants";
 import { directorServices } from "@/modules/director/services/directorServices";
+import { useFormState } from "@/hooks/useFormState";
 
 /**
  * Hook personalizado para gestionar la lógica del formulario de directores.
@@ -25,16 +26,11 @@ export const useDirectorForm = () => {
     const { id } = useParams();
     const isEditMode = Boolean(id);
 
+    const { loading, responseState, handleRequest } = useFormState();
+
     const [name, setName] = useState("");
     const [isActive, setIsActive] = useState(false);
     const [colorIsActive, setColorIsActive] = useState(STATE_COLORS.INACTIVE);
-    const [loading, setLoading] = useState(false);
-
-    const [responseState, setResponseState] = useState({
-        success: null,
-        message: null,
-        error: null
-    });
 
     useEffect(() => {
 
@@ -44,7 +40,7 @@ export const useDirectorForm = () => {
          * Obtiene los datos del director desde el servidor si estamos en modo edición.
          */
         const fetchDirector = async () => {
-            const director = await directorServices.getDirector(id);
+            const director = await directorServices.getById(id);
             const { name, state } = director.affectedRows[0];
 
             setName(name);
@@ -85,52 +81,20 @@ export const useDirectorForm = () => {
 
         e.preventDefault();
 
-        let response;
-
         const data = {
             id,
             name,
             state: isActive
         };
 
-        try {
+        await handleRequest(async () => {
+            if (isEditMode) return await directorServices.update(data);
 
-            setLoading(true);
-
-            if (isEditMode) {
-
-                response = await directorServices.updateDirector(data);
-
-            } else {
-
-                response = await directorServices.createDirector(data);
-
-                setName("");
-                toggleState(false);
-            }
-
-            setResponseState({
-                success: response.submit,
-                message: response.message,
-                error: null
-            });
-
-        } catch (error) {
-
-            console.error("Error:", error);
-
-            setResponseState({
-                success: false,
-                message: null,
-                error:
-                    error.response?.data?.errors?.[0]?.message ||
-                    "Error al conectar con el servidor"
-            });
-
-        } finally {
-
-            setLoading(false);
-        }
+            const response = await directorServices.create(data);
+            setName(""); // Limpiar solo si es creación
+            setIsActive(false);
+            return response;
+        });
     };
 
     return {
