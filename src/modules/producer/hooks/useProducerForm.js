@@ -41,7 +41,7 @@ export const useProducerForm = () => {
         const fetchProducer = async () => {
             try {
                 const response = await producerServices.getById(id);
-                const { name, state, slogan } = response.affectedRows[0];
+                const { name, state, slogan, description } = response.affectedRows[0];
 
                 setName(name || "");
                 setSlogan(slogan || "");
