@@ -6,7 +6,7 @@ import { useFormState } from "@/hooks/useFormState";
 
 /**
  * Hook personalizado para gestionar la lógica del formulario de tipos de películas.
- * Maneja el estado local (nombre, eslogan, descripción, estado activo) y la comunicación con la API.
+ * Maneja el estado local (nombre, descripción) y la comunicación con la API.
  * 
  * @returns {Object} El estado y las funciones necesarias para el formulario de tipos de películas.
  * @property {string} name - Nombre del tipo de película.
