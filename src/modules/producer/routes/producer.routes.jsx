@@ -1,11 +1,21 @@
-import { ProducerPage } from "@/modules/producer/pages/ProducerPage";
+import { ProducerListPage } from "@/modules/producer/pages/ProducerListPage";
+import { ProducerCreatePage } from "@/modules/producer/pages/ProducerCreatePage";
+import { ProducerUpdatePage } from "@/modules/producer/pages/ProducerUpdatePage";
 
 /**
- * Definición de las rutas para el módulo de Productoras.
+ * Definición de las rutas para el módulo de Productores.
  */
 export const producerRoutes = [
     {
         path: "producer",
-        element: <ProducerPage />,
+        element: <ProducerListPage />,
+    },
+    {
+        path: "producer/create",
+        element: <ProducerCreatePage />,
+    },
+    {
+        path: "producer/update/:id",
+        element: <ProducerUpdatePage />,
     },
 ];
