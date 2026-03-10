@@ -22,20 +22,28 @@ export const DirectorForm = () => {
             backTo="/director"
             text="directores"
         >
-            <div className="d-flex flex-column flex-md-row align-items-md-center gap-3 gap-md-4">
-                <FormInput
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Nombre del Director"
-                    required
-                />
-                <FormSwitch
-                    id="switchDirector"
-                    isActive={isActive}
-                    onChange={toggleState}
-                    colorIsActive={colorIsActive}
-                />
+            <div className="row g-3">
+
+                <div className="col-12 col-md-8">
+
+                    <FormInput
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Nombre del Director"
+                        required
+                    />
+                </div>
+
+                <div className="col-12 col-md-4 d-flex align-items-end pb-2">
+
+                    <FormSwitch
+                        id="switchDirector"
+                        isActive={isActive}
+                        onChange={toggleState}
+                        colorIsActive={colorIsActive}
+                    />
+                </div>
             </div>
-        </FormLayout>
+        </FormLayout >
     );
 };
