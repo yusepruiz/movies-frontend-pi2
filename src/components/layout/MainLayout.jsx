@@ -1,5 +1,5 @@
 import { Link, Outlet } from 'react-router';
-import { Sidebar } from '@/components/Sidebar';
+import { Sidebar } from '@/components/layout/Sidebar';
 import { useCloseOffcanvas } from '@/hooks/useCloseOffcanvas';
 
 /**
