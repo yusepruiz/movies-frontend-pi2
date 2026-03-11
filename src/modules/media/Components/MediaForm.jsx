@@ -1,178 +1,138 @@
+import { useMediaForm } from "../hooks/useMediaForm";
 import { FormLayout } from "@/components/layout/FormLayout";
 import { FormInput } from "@/components/common/FormInput";
+import { FormTextArea } from "@/components/common/FormTextArea";
 import { FormSelect } from "@/components/common/FormSelect";
-import { useMediaForm } from "@/modules/media/hooks/useMediaForm";
-import { directorsActive } from "@/modules/director/services/directorServices";
-import { gendersActive } from "@/modules/gender/services/genderServices";
-import { producersActive } from "@/modules/producer/services/producerServices";
-import { typeServices } from "@/modules/type/services/typeServices";
-import { useEffect, useState } from "react";
 
 /**
- * Componente de formulario para la creación y actualización de medios.
- * Utiliza el hook `useMediaForm` para centralizar la lógica y el estado.
+ * Componente de formulario para la creación y edición de producciones multimedia.
+ * Renderiza campos para título, sinopsis, año y selectores para todos los catálogos.
  * 
  * @returns {JSX.Element} El formulario de medios renderizado.
  */
 export const MediaForm = () => {
-    const { title, setTitle, synopsis, setSynopsis, release_year, setReleaseYear, url, setUrl, image, setImage, loading, handleSubmit, isEditMode, responseState, } = useMediaForm();
-
-    const [dataIds, setDataIds] = useState({
-        genre: { id: "", name: "" },
-        director: { id: "", name: "" },
-        producer: { id: "", name: "" },
-        type: { id: "", name: "" }
-    });
-
-    useEffect(() => {
-
-        const fetchGenre = async () => {
-            try {
-                const director = await directorsActive.getAll();
-                const genre = await gendersActive.getAll();
-                const producer = await producersActive.getAll();
-                const type = await typeServices.getAll();
-
-                const promises = [genre, director, producer, type];
-                // const [genreData, directorData, producerData, typeData] = await Promise.all(promises);
-                const e = await Promise.all(promises);
-
-                console.log(e);
-
-                // const { name: genreName, id: genreId } = genreData.affectedRows[0];
-                // const { name: directorName, id: directorId } = directorData.affectedRows[0];
-                // const { name: producerName, id: producerId } = producerData.affectedRows[0];
-                // const { name: typeName, id: typeId } = typeData.affectedRows[0];
-
-                // setDataIds({
-                //     genre: { id: genreId, name: genreName },
-                //     director: { id: directorId, name: directorName },
-                //     producer: { id: producerId, name: producerName },
-                //     type: { id: typeId, name: typeName }
-                // });
-
-                // console.log(dataIds.genre);
-
-            } catch (error) {
-                console.error("Error fetching genre:", error);
-            }
-        };
-        fetchGenre();
-    }, []);
-
-
+    const {
+        // Estados de los inputs
+        formData, handleInputChange,
+        // Listas para los selects
+        genres, directors, producers, types,
+        // Estados de control
+        loading, handleSubmit, isEditMode, responseState
+    } = useMediaForm();
+    // console.log(formData)
     return (
         <FormLayout
-            title={isEditMode ? "Actualizar Media" : "Crear Media"}
+            title={isEditMode ? "Editar Película/Serie" : "Nueva Producción"}
             onSubmit={handleSubmit}
             loading={loading}
             isEditMode={isEditMode}
             responseState={responseState}
             backTo="/media"
-            text="medios"
+            text="películas"
         >
             <div className="row g-3">
-
-                <div className="col-12 col-md-6">
-
+                {/* --- SECCIÓN PRINCIPAL --- */}
+                <div className="col-md-8">
                     <FormInput
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        placeholder="Nombre del Media"
+                        label="Título"
+                        name="title"
+                        value={formData.title}
+                        onChange={handleInputChange}
+                        placeholder="Nombre de la obra"
+                        required
+                    />
+                </div>
+                <div className="col-md-4">
+                    <FormInput
+                        label="Año de Estreno"
+                        name="release_year"
+                        type="number"
+                        onInput={(e) => {
+                            if (e.target.value.length > 4) {
+                                e.target.value = e.target.value.slice(0, 4);
+                            }
+                        }}
+                        value={formData.release_year}
+                        onChange={handleInputChange}
+                        placeholder="AAAA"
                         required
                     />
                 </div>
 
-                <div className="col-12 col-md-6">
-
+                {/* --- MULTIMEDIA --- */}
+                <div className="col-md-6">
                     <FormInput
-                        value={synopsis}
-                        onChange={(e) => setSynopsis(e.target.value)}
-                        placeholder="Sinopsis"
-                        required
+                        label="URL del Video"
+                        name="url"
+                        value={formData.url}
+                        onChange={handleInputChange}
+                        placeholder="https://..."
                     />
                 </div>
-            </div>
-            <div className="row g-3">
-                <div className="col-12 col-md-6">
-
+                <div className="col-md-6">
                     <FormInput
-                        value={url}
-                        onChange={(e) => setUrl(e.target.value)}
-                        placeholder="URL"
-                        required
-                    />
-                </div>
-                <div className="col-12 col-md-6">
-
-                    <FormInput
-                        value={image}
-                        onChange={(e) => setImage(e.target.value)}
-                        placeholder="URL de la Imagen"
-                        required
-                    />
-                </div>
-            </div>
-            <div className="row g-3">
-                <div className="col-12 col-md-6">
-
-                    <FormInput
-                        value={release_year}
-                        onChange={(e) => setReleaseYear(e.target.value)}
-                        placeholder="Año de Estreno"
-                        required
+                        label="URL de la Imagen (Portada)"
+                        name="image"
+                        value={formData.image}
+                        onChange={handleInputChange}
+                        placeholder="Ruta de la imagen"
                     />
                 </div>
 
-            </div>
-            <div className="row g-3">
-                <div className="col-12 col-md-6">
-
+                {/* --- CLASIFICACIÓN (SELECTS) --- */}
+                <div className="col-md-3">
                     <FormSelect
-                        name="director_id"
-                        value={0}
-                        onChange={(e) => setReleaseYear(e.target.value)}
-                        options={[{ value: 1, label: "Acción" }]} // Aquí deberías cargar las opciones de género desde tu API o estado
-                        placeholder="Selecciona un director"
-                        required
-                    />
-                </div>
-                <div className="col-12 col-md-6">
-
-                    <FormSelect
-                        name="producer_id"
-                        value={0}
-                        onChange={(e) => setReleaseYear(e.target.value)}
-                        options={[{ value: 1, label: "Acción" }]} // Aquí deberías cargar las opciones de género desde tu API o estado
-                        placeholder="Selecciona un productor"
-                        required
-                    />
-                </div>
-            </div>
-            <div className="row g-3">
-                <div className="col-12 col-md-6">
-
-                    <FormSelect
-                        name="type_id"
-                        value={0}
-                        onChange={(e) => setReleaseYear(e.target.value)}
-                        options={[{ value: 1, label: "Acción" }]} // Aquí deberías cargar las opciones de género desde tu API o estado
-                        placeholder="Selecciona un tipo"
-                        required
-                    />
-                </div>
-                <div className="col-12 col-md-6">
-
-                    <FormSelect
+                        label="Género"
                         name="genre_id"
-                        value={0}
-                        onChange={(e) => setReleaseYear(e.target.value)}
-                        options={[{ value: 1, label: "Acción" }]} // Aquí deberías cargar las opciones de género desde tu API o estado
-                        placeholder="Selecciona un género"
+                        value={formData.genre_id}
+                        onChange={handleInputChange}
+                        options={genres}
                         required
                     />
                 </div>
+                <div className="col-md-3">
+                    <FormSelect
+                        label="Director"
+                        name="director_id"
+                        value={formData.director_id}
+                        onChange={handleInputChange}
+                        options={directors}
+                        required
+                    />
+                </div>
+                <div className="col-md-3">
+                    <FormSelect
+                        label="Productora"
+                        name="producer_id"
+                        value={formData.producer_id}
+                        onChange={handleInputChange}
+                        options={producers}
+                        required
+                    />
+                </div>
+                <div className="col-md-3">
+                    <FormSelect
+                        label="Tipo"
+                        name="type_id"
+                        value={formData.type_id}
+                        onChange={handleInputChange}
+                        options={types}
+                        required
+                    />
+                </div>
+
+                {/* --- DESCRIPCIÓN --- */}
+                <div className="col-12">
+                    <FormTextArea
+                        label="Sinopsis / Descripción"
+                        name="synopsis"
+                        value={formData.synopsis}
+                        onChange={handleInputChange}
+                        placeholder="Resume la trama aquí..."
+                        rows={3}
+                    />
+                </div>
             </div>
-        </FormLayout >
+        </FormLayout>
     );
 };

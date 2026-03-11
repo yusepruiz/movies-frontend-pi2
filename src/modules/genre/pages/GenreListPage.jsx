@@ -1,4 +1,4 @@
-import { genderServices } from "@/modules/gender/services/genderServices";
+import { genreServices } from "@/modules/genre/services/genreServices";
 import { ListLayout } from "@/components/layout/ListLayout";
 import { GenericList } from "@/components/common/GenericList";
 
@@ -8,17 +8,17 @@ import { GenericList } from "@/components/common/GenericList";
  * 
  * @returns {JSX.Element} La página de listado de géneros.
  */
-export const GenderListPage = () => {
-    const gendersPromise = genderServices.getAll();
+export const GenreListPage = () => {
+    const genresPromise = genreServices.getAll();
 
     return (
         <ListLayout
             title="Listado de Géneros"
-            createLink="/gender/create"
+            createLink="/genre/create"
         >
             <GenericList
-                promise={gendersPromise}
-                resourcePath="gender"
+                promise={genresPromise}
+                resourcePath="genre"
                 emptyMessage="No hay géneros registrados."
             />
         </ListLayout>

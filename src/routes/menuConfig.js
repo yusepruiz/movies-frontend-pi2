@@ -1,5 +1,5 @@
 import { directorMenu } from "@/modules/director/directorMenu";
-import { genderMenu } from "@/modules/gender/genderMenu";
+import { genreMenu } from "@/modules/genre/genreMenu";
 import { mediaMenu } from "@/modules/media/mediaMenu";
 import { producerMenu } from "@/modules/producer/producerMenu";
 import { typeMenu } from "@/modules/type/typeMenu";
@@ -11,7 +11,7 @@ import { typeMenu } from "@/modules/type/typeMenu";
  */
 export const menuConfig = [
     directorMenu,
-    genderMenu,
+    genreMenu,
     mediaMenu,
     producerMenu,
     typeMenu

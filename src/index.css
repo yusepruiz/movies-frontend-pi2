@@ -109,8 +109,10 @@ body {
 /* Ajustes para Móvil (< 992px) */
 @media (max-width: 991.98px) {
   main {
-    padding: 1rem !important; /* Menos espacio en pantallas pequeñas */
-    min-height: calc(100vh - 56px); /* Restamos la altura de la navbar móvil */
+    padding: 1rem !important;
+    /* Menos espacio en pantallas pequeñas */
+    min-height: calc(100vh - 56px);
+    /* Restamos la altura de la navbar móvil */
   }
 
   .offcanvas {
@@ -118,7 +120,8 @@ body {
   }
 
   .card {
-    border-radius: 0.5rem; /* Bordes un poco más cerrados en móvil */
+    border-radius: 0.5rem;
+    /* Bordes un poco más cerrados en móvil */
   }
 }
 
@@ -127,4 +130,12 @@ body {
   .vh-100 {
     height: 100dvh !important;
   }
+}
+
+.text-truncate-custom {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* Número de líneas que quieres mostrar */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

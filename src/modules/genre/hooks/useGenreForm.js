@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
 import { STATE_COLORS } from "@/constants/constants";
-import { genderServices } from "@/modules/gender/services/genderServices";
+import { genreServices } from "@/modules/genre/services/genreServices";
 import { useFormState } from "@/hooks/useFormState";
 
 /**
@@ -22,7 +22,7 @@ import { useFormState } from "@/hooks/useFormState";
  * @property {boolean} isEditMode - Indica si el formulario está en modo edición.
  * @property {Object} responseState - Estado de la respuesta del servidor (success, message, error).
  */
-export const useGenderForm = () => {
+export const useGenreForm = () => {
     const { id } = useParams();
     const isEditMode = Boolean(id);
     const { loading, responseState, handleRequest } = useFormState();
@@ -35,9 +35,9 @@ export const useGenderForm = () => {
     useEffect(() => {
         if (!isEditMode) return;
 
-        const fetchGender = async () => {
+        const fetchGenre = async () => {
             try {
-                const response = await genderServices.getById(id);
+                const response = await genreServices.getById(id);
                 const { name, state, description } = response.affectedRows[0];
 
                 setName(name || "");
@@ -49,7 +49,7 @@ export const useGenderForm = () => {
             }
         };
 
-        fetchGender();
+        fetchGenre();
     }, [id, isEditMode]);
 
     const toggleState = (checked) => {
@@ -70,9 +70,9 @@ export const useGenderForm = () => {
 
         await handleRequest(async () => {
             if (isEditMode) {
-                return await genderServices.update(data);
+                return await genreServices.update(data);
             } else {
-                const response = await genderServices.create(data);
+                const response = await genreServices.create(data);
 
                 // Limpiamos todos los campos tras creación exitosa
                 setName("");

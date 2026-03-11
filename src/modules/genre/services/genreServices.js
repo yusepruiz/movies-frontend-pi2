@@ -4,7 +4,7 @@ import { createApiService } from "@/services/apiFactory";
  * Servicios para la gestión de géneros de películas.
  * Utiliza apiFactory para proporcionar métodos CRUD.
  */
-export const genderServices = createApiService("gender");
+export const genreServices = createApiService("genre");
 
-export const gendersActive = createApiService("gender/active");
+export const genresActive = createApiService("genre/active");
 

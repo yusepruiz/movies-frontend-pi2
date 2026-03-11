@@ -1,4 +1,4 @@
-import { useGenderForm } from "@/modules/gender/hooks/useGenderForm";
+import { useGenreForm } from "@/modules/genre/hooks/useGenreForm";
 import { FormLayout } from "@/components/layout/FormLayout";
 import { FormInput } from "@/components/common/FormInput";
 import { FormSwitch } from "@/components/common/FormSwitch";
@@ -6,16 +6,16 @@ import { FormTextArea } from "@/components/common/FormTextArea";
 
 /**
  * Componente de formulario para la creación y actualización de géneros.
- * Utiliza el hook `useGenderForm` para centralizar la lógica y el estado.
+ * Utiliza el hook `useGenreForm` para centralizar la lógica y el estado.
  * 
  * @returns {JSX.Element} El formulario de géneros renderizado.
  */
-export const GenderForm = () => {
+export const GenreForm = () => {
     const {
         name, setName, description, setDescription, isActive,
         colorIsActive, toggleState, loading, handleSubmit,
         isEditMode, responseState
-    } = useGenderForm();
+    } = useGenreForm();
 
     return (
         <FormLayout
@@ -24,7 +24,7 @@ export const GenderForm = () => {
             loading={loading}
             isEditMode={isEditMode}
             responseState={responseState}
-            backTo="/gender"
+            backTo="/genre"
             text="géneros"
         >
             {/* Contenedor principal de campos */}
@@ -43,7 +43,7 @@ export const GenderForm = () => {
 
                 <div className="col-12 col-md-4 d-flex align-items-end pb-2">
                     <FormSwitch
-                        id="switchGender"
+                        id="switchGenre"
                         isActive={isActive}
                         onChange={toggleState}
                         colorIsActive={colorIsActive}

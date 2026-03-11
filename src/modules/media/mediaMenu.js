@@ -2,11 +2,11 @@
  * Configuración del menú para el módulo de Medios.
  */
 export const mediaMenu = {
-    title: "Medios",
+    title: "Películas/Series",
     id: "menuMedia",
-    icon: "bi-film",
+    icon: "bi-play-btn",
     links: [
-        { label: "Listar Medios", to: "/media", icon: "bi-list-ul" },
-        { label: "Crear Medio", to: "/media/create", icon: "bi-plus-circle" },
+        { label: "Listar Películas/Series", to: "/media", icon: "bi-list-ul" },
+        { label: "Crear Película/Serie", to: "/media/create", icon: "bi-plus-circle" },
     ],
 };

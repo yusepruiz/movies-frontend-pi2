@@ -4,7 +4,7 @@ import axios from "axios";
  * Generador de servicios CRUD genérico para evitar repetición de código.
  * Proporciona métodos estandarizados para interactuar con una API REST.
  * 
- * @param {string} endpoint - El nombre del recurso (ej: 'director', 'gender').
+ * @param {string} endpoint - El nombre del recurso (ej: 'director', 'genre').
  * @returns {Object} Un objeto con métodos CRUD (create, update, delete, getById, getAll).
  */
 export const createApiService = (endpoint) => {

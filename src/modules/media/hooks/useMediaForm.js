@@ -1,111 +1,142 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-
-import { STATE_COLORS } from "@/constants/constants";
-import { mediaServices } from "@/modules/media/services/mediaServices";
 import { useFormState } from "@/hooks/useFormState";
+import { mediaServices } from "../services/mediaServices";
+
+// servicios para llenar los selects
+import { genreServices } from "@/modules/genre/services/genreServices";
+import { directorServices } from "@/modules/director/services/directorServices";
+import { producerServices } from "@/modules/producer/services/producerServices";
+import { typeServices } from "@/modules/type/services/typeServices";
+
+const initialFormState = {
+    title: "",
+    synopsis: "",
+    url: "",
+    image: "",
+    release_year: "",
+    genre_id: "",
+    director_id: "",
+    producer_id: "",
+    type_id: ""
+};
 
 /**
- * Hook personalizado para gestionar la lógica del formulario de medios.
- * Maneja tanto la creación como la actualización de medios, centralizando
- * el estado, la validación y el envío de datos.
+ * Hook personalizado para gestionar el estado y la lógica del formulario de Películas/Series.
+ * Maneja la carga de catálogos filtrados por activos, datos iniciales en edición y envío de formulario.
  * 
- * @returns {Object} Un objeto con el estado y las funciones necesarias para el formulario.
- * @property {string} name - El nombre actual del medio.
- * @property {Function} setName - Función para actualizar el nombre.
- * @property {boolean} isActive - Indica si el medio está activo.
- * @property {string} colorIsActive - El color hexadecimal correspondiente al estado activo/inactivo.
- * @property {Function} toggleState - Función para cambiar el estado de activo.
- * @property {boolean} loading - Indica si hay una operación asíncrona en curso.
- * @property {Function} handleSubmit - Manejador para el envío del formulario.
- * @property {boolean} isEditMode - Indica si el formulario está en modo edición (si hay un ID en la URL).
- * @property {Object} responseState - El estado de la respuesta del servidor (éxito, mensaje, error).
+ * @returns {Object} El estado y las funciones para el formulario de Multimedia.
+ * @property {Object} formData - Los valores actuales de los campos del formulario.
+ * @property {Function} handleInputChange - Manejador universal para cambios en los inputs.
+ * @property {Array} genres - Catálogo de géneros activos.
+ * @property {Array} directors - Catálogo de directores activos.
+ * @property {Array} producers - Catálogo de productoras activas.
+ * @property {Array} types - Catálogo de tipos activos.
+ * @property {boolean} loading - Estado de carga global.
+ * @property {Object} responseState - Resultado de la última petición al servidor.
+ * @property {Function} handleSubmit - Función para procesar el envío del formulario.
+ * @property {boolean} isEditMode - Indica si se está editando una producción existente.
  */
 export const useMediaForm = () => {
-
     const { id } = useParams();
     const isEditMode = Boolean(id);
-
     const { loading, responseState, handleRequest } = useFormState();
 
-    const [name, setName] = useState("");
-    const [isActive, setIsActive] = useState(false);
-    const [colorIsActive, setColorIsActive] = useState(STATE_COLORS.INACTIVE);
+    // 1. Estado para los catálogos (Selects)
+    const [catalogs, setCatalogs] = useState({
+        genres: [],
+        directors: [],
+        producers: [],
+        types: []
+    });
+
+    // 2. Estado unificado para el formulario
+    const [formData, setFormData] = useState(initialFormState);
 
     useEffect(() => {
+        const loadInitialData = async () => {
+            try {
+                // 1. Peticiones en paralelo
+                const [g, d, p, t] = await Promise.all([
+                    genreServices.getAll(),
+                    directorServices.getAll(),
+                    producerServices.getAll(),
+                    typeServices.getAll()
+                ]);
 
-        if (!isEditMode) return;
+                // 2. Aplicamos el filtro de "ACTIVOS" antes de guardar en el estado
+                // Asumiendo que 'state' viene como 1 (activo) o 0 (inactivo)
+                setCatalogs({
+                    genres: (g.affectedRows || g).filter(item => Boolean(item.state)),
+                    directors: (d.affectedRows || d).filter(item => Boolean(item.state)),
+                    producers: (p.affectedRows || p).filter(item => Boolean(item.state)),
+                    types: t.affectedRows
+                });
 
-        /**
-         * Obtiene los datos del director desde el servidor si estamos en modo edición.
-         */
-        const fetchMedia = async () => {
-            const media = await mediaServices.getById(id);
-            const { name, state } = media.affectedRows[0];
+                // 3. Carga de datos si es edición
+                if (isEditMode) {
+                    try {
+                        const response = await mediaServices.getById(id);
+                        const mediaData = response.affectedRows ? response.affectedRows[0] : response;
 
-            setName(name);
-            setIsActive(Boolean(state));
-            setColorIsActive(
-                state
-                    ? STATE_COLORS.ACTIVE
-                    : STATE_COLORS.INACTIVE
-            );
+                        setFormData({
+                            title: mediaData.title || "",
+                            synopsis: mediaData.synopsis || "",
+                            url: mediaData.url || "",
+                            image: mediaData.image || "",
+                            release_year: mediaData.release_year || "",
+                            genre_id: mediaData.genre_id || "",
+                            director_id: mediaData.director_id || "",
+                            producer_id: mediaData.producer_id || "",
+                            type_id: mediaData.type_id || ""
+                        });
+                    } catch (error) {
+                        console.error("Error al cargar media para editar", error);
+                    }
+                }
+            } catch (error) {
+                console.error("Error cargando datos iniciales:", error);
+            }
         };
 
-        fetchMedia();
-
+        loadInitialData();
     }, [id, isEditMode]);
 
-    /**
-     * Alterna el estado de activación del director y actualiza el color visual.
-     * 
-     * @param {boolean} checked - El nuevo estado del switch.
-     */
-    const toggleState = (checked) => {
+    // Manejador de cambios universal para todos los inputs
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
 
-        setIsActive(checked);
+        // Si el campo es el año, no permitimos más de 4 caracteres
+        if (name === "release_year" && value.length > 4) {
+            return; // No actualizamos el estado si intenta escribir un 5to dígito
+        }
 
-        setColorIsActive(
-            checked
-                ? STATE_COLORS.ACTIVE
-                : STATE_COLORS.INACTIVE
-        );
+        setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    /**
-     * Procesa el envío del formulario (Creación o Actualización).
-     * 
-     * @param {React.FormEvent} e - El evento de envío del formulario.
-     */
     const handleSubmit = async (e) => {
-
         e.preventDefault();
-
-        const data = {
-            id,
-            name,
-            state: isActive
-        };
-
         await handleRequest(async () => {
-            if (isEditMode) return await mediaServices.update(data);
+            if (isEditMode) {
+                return await mediaServices.update({ id, ...formData });
+            } else {
+                const response = await mediaServices.create(formData);
 
-            const response = await mediaServices.create(data);
-            setName(""); // Limpiar solo si es creación
-            setIsActive(false);
-            return response;
+                // Limpiar formulario tras crear
+                setFormData(initialFormState);
+
+                return response;
+            }
         });
     };
 
     return {
-        name,
-        setName,
-        isActive,
-        colorIsActive,
-        toggleState,
+        formData,
+        handleInputChange,
+        ...catalogs, // Esparcir genres, directors, etc.
         loading,
+        responseState,
         handleSubmit,
-        isEditMode,
-        responseState
+        isEditMode
     };
 };
