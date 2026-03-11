@@ -5,3 +5,6 @@ import { createApiService } from "@/services/apiFactory";
  * Utiliza apiFactory para proporcionar métodos CRUD.
  */
 export const genderServices = createApiService("gender");
+
+export const gendersActive = createApiService("gender/active");
+

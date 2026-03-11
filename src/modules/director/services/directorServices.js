@@ -5,3 +5,6 @@ import { createApiService } from "@/services/apiFactory";
  * Utiliza apiFactory para proporcionar métodos CRUD estandarizados.
  */
 export const directorServices = createApiService("director");
+
+export const directorsActive = createApiService("director/active");
+
