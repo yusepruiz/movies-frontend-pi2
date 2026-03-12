@@ -10,10 +10,10 @@
  */
 export const MediaCard = ({ item, catalogs, getName }) => {
     return (
-        <div className="card mb-3 border-0 w-100 py-3">
-            <div className="row g-0">
+        <div className="card border-0 w-100">
+            <div className="d-block-custom row g-0">
                 {/* Columna de la Imagen */}
-                <div className="col-md-1 d-flex justify-content-center">
+                <div className="aspect-ratio-custom col-md-1 d-flex justify-content-center">
                     <img
                         src={item.image}
                         className="img-fluid rounded"
@@ -27,7 +27,7 @@ export const MediaCard = ({ item, catalogs, getName }) => {
                 </div>
 
                 {/* Columna de Información */}
-                <div className="col-md-9 ps-4">
+                <div className="ps-custom col-md-9 ps-4">
                     <div className="d-flex align-items-center mb-1">
                         <h4 className="card-title mb-0 me-3 fw-bold">{item.title}</h4>
                     </div>
