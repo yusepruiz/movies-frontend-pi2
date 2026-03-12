@@ -139,3 +139,26 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Custom Breakpoint para dispositivos pequeños (Mobile S/M/L) */
+@media (max-width: 425px) {
+
+  /* Forzamos a que el LI deje de ser flex horizontal */
+  .d-block-custom {
+    display: block !important;
+  }
+
+  .aspect-ratio-custom {
+    aspect-ratio: 1/1;
+  }
+
+  .aspect-ratio-custom img {
+    max-height: 100% !important;
+  }
+
+  /* Quitamos el padding lateral que tienen las columnas de info en escritorio */
+  .ps-custom {
+    padding-left: 0 !important;
+    margin-top: 1rem;
+  }
+}
