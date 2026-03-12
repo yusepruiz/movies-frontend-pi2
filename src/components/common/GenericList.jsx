@@ -13,25 +13,10 @@ export const GenericList = ({
 
     if (list.length === 0) return <p className="mt-3 text-muted">{emptyMessage}</p>;
 
-    const handleDelete = async (id, name) => {
-        // El nombre es opcional, si no viene usamos el ID
-        const displayName = name || `el registro con ID: ${id}`;
-
-        if (window.confirm(`¿Estás seguro de que deseas eliminar "${displayName}"?`)) {
-            try {
-                await onDelete(id);
-                // Forzamos el refresh para ver los cambios
-                window.location.reload();
-            } catch (error) {
-                alert("No se pudo eliminar el registro. Puede que tenga dependencias.");
-            }
-        }
-    };
-
     return (
         <ul className="list-group mt-3 shadow-sm">
             {list.map((item) => (
-                <li key={item.id} className="list-group-item d-flex align-items-center py-3">
+                <li key={item.id} className="d-block-custom list-group-item d-flex align-items-center py-3">
 
                     <div className="flex-grow-1">
                         {renderItem ? (
@@ -48,7 +33,7 @@ export const GenericList = ({
                     </div>
 
                     {/* SECCIÓN DE ACCIONES CENTRALIZADA */}
-                    <div className="ms-auto d-flex flex-column gap-2 justify-content-start">
+                    <div className="ms-auto d-flex flex-column gap-2 justify-content-start pt-3">
                         <Link
                             to={`/${resourcePath}/update/${item.id}`}
                             className="btn btn-sm btn-warning px-2 py-1"
@@ -60,8 +45,8 @@ export const GenericList = ({
                         {
                             onDelete && (
                                 <button
-                                    onClick={() => handleDelete(item.id, item.name || item.title)}
-                                    className="btn btn-sm btn-danger px-2 py-1"
+                                    onClick={() => onDelete(item)}
+                                    className="btn btn-sm btn-danger px-2 py-1" 
                                     style={{ height: 'fit-content' }} // Forzamos a que solo ocupe su contenido
                                 >
                                     <i className="bi bi-trash me-2"></i>Eliminar

@@ -1,6 +1,7 @@
 import { mediaServices } from "@/modules/media/services/mediaServices";
 
 import { useCatalogs } from "@/hooks/useCatalogs";
+import { useDelete } from "@/hooks/useDelete";
 
 import { ListLayout } from "@/components/layout/ListLayout";
 import { GenericList } from "@/components/common/GenericList";
@@ -11,6 +12,8 @@ import { getNameById } from "@/utils/catalogHelpers";
 export const MediaListPage = () => {
     const mediaPromise = mediaServices.getAll();
     const catalogs = useCatalogs();
+
+    const { handleDelete } = useDelete(mediaServices.delete);
 
     return (
         <ListLayout title="Listado de Películas/Series" createLink="/media/create">
@@ -24,7 +27,7 @@ export const MediaListPage = () => {
                         getName={getNameById}
                     />
                 )}
-                onDelete={(id) => mediaServices.delete(id)} // <--- ¡Y listo!
+                onDelete={handleDelete}
             />
         </ListLayout >
     );
