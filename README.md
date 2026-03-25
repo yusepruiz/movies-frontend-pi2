@@ -28,16 +28,31 @@ Proporciona una interfaz premium, responsiva y amigable para administrar conteni
 
 ## 📦 Instalación y Ejecución
 
-1.  **Clonar dependencia o navegar al directorio del proyecto.**
+1.  **Clonar el repositorio.**
 2.  **Instalar dependencias:**
     ```bash
     npm install
     ```
-3.  **Visualizar el proyecto en desarrollo:**
+3.  **Configurar variables de entorno:**
+    Crea un archivo `.env` en la raíz del proyecto (puedes basarte en el archivo `.env` generado o crear uno nuevo):
+    ```env
+    VITE_API_URL=http://localhost:4000/api
+    ```
+4.  **Ejecutar el proyecto en desarrollo:**
     ```bash
     npm run dev
     ```
     La aplicación estará disponible por defecto en `http://localhost:5173`.
+
+## 🌐 Variables de Entorno
+
+Este proyecto utiliza variables de entorno de Vite para la configuración dinámica de la API:
+
+| Variable | Descripción | Valor por Defecto |
+| :--- | :--- | :--- |
+| `VITE_API_URL` | URL base para las peticiones al backend | `http://localhost:4000/api` |
+
+Al desplegar en producción (Vercel, Netlify, etc.), asegúrate de configurar esta variable con la URL de tu backend desplegado.
 
 ## 📂 Organización del Código
 
@@ -52,5 +67,5 @@ El código está estructurado en módulos para garantizar la escalabilidad:
 
 ---
 
-> [!NOTE] 
-> Esta aplicación frontend asume que existe una API (Backend) ejecutándose u operando en las rutas correspondientes del servidor manejado por el proxy o base de API configurado (normalmente `http://localhost:4000/api/`).
+> [!TIP]
+> La aplicación ahora es flexible: utiliza `import.meta.env.VITE_API_URL` para conectarse al backend, lo que facilita el cambio entre entornos local y de producción sin modificar el código fuente.
