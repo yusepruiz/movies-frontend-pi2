@@ -1,4 +1,4 @@
-import { useMediaForm } from "../hooks/useMediaForm.js";
+import { useMediaForm } from "@/modules/media/hooks/useMediaForm.js";
 import { FormLayout } from "@/components/layout/FormLayout.jsx";
 import { FormInput } from "@/components/common/FormInput.jsx";
 import { FormTextArea } from "@/components/common/FormTextArea.jsx";
