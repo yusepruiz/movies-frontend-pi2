@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
-import { STATE_COLORS } from "@/constants/constants";
-import { producerServices } from "@/modules/producer/services/producerServices";
-import { useFormState } from "@/hooks/useFormState";
+import { STATE_COLORS } from "@/constants/constants.js";
+import { producerServices } from "@/modules/producer/services/producerServices.js";
+import { useFormState } from "@/hooks/useFormState.js";
 
 /**
  * Hook personalizado para gestionar la lógica del formulario de productores.

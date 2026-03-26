@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router';
-import { Sidebar } from '@/components/layout/Sidebar';
-import { useCloseOffcanvas } from '@/hooks/useCloseOffcanvas';
+import { Sidebar } from '@/components/layout/Sidebar.jsx';
+import { useCloseOffcanvas } from '@/hooks/useCloseOffcanvas.js';
 
 /**
  * Componente de diseño principal de la aplicación.

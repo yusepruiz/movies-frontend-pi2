@@ -1,6 +1,6 @@
-import { TypeListPage } from "@/modules/type/pages/TypeListPage";
-import { TypeCreatePage } from "@/modules/type/pages/TypeCreatePage";
-import { TypeUpdatePage } from "@/modules/type/pages/TypeUpdatePage";
+import { TypeListPage } from "@/modules/type/pages/TypeListPage.jsx";
+import { TypeCreatePage } from "@/modules/type/pages/TypeCreatePage.jsx";
+import { TypeUpdatePage } from "@/modules/type/pages/TypeUpdatePage.jsx";
 
 /**
  * Definición de las rutas para el módulo de Tipos de Contenido.

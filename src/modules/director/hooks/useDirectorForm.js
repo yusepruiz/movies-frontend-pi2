@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
-import { STATE_COLORS } from "@/constants/constants";
-import { directorServices } from "@/modules/director/services/directorServices";
-import { useFormState } from "@/hooks/useFormState";
+import { STATE_COLORS } from "@/constants/constants.js";
+import { directorServices } from "@/modules/director/services/directorServices.js";
+import { useFormState } from "@/hooks/useFormState.js";
 
 /**
  * Hook personalizado para gestionar la lógica del formulario de directores.

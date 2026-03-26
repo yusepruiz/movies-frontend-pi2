@@ -1,6 +1,6 @@
-import { typeServices } from "@/modules/type/services/typeServices";
-import { ListLayout } from "@/components/layout/ListLayout";
-import { GenericList } from "@/components/common/GenericList";
+import { typeServices } from "@/modules/type/services/typeServices.js";
+import { ListLayout } from "@/components/layout/ListLayout.jsx";
+import { GenericList } from "@/components/common/GenericList.jsx";
 
 /**
  * Página principal del módulo de Tipos de Película.

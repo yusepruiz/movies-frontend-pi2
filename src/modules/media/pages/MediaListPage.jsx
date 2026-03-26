@@ -1,13 +1,13 @@
-import { mediaServices } from "@/modules/media/services/mediaServices";
-
-import { useCatalogs } from "@/hooks/useCatalogs";
-import { useDelete } from "@/hooks/useDelete";
-
-import { ListLayout } from "@/components/layout/ListLayout";
-import { GenericList } from "@/components/common/GenericList";
+import { mediaServices } from "@/modules/media/services/mediaServices.js";
+ 
+import { useCatalogs } from "@/hooks/useCatalogs.js";
+import { useDelete } from "@/hooks/useDelete.js";
+ 
+import { ListLayout } from "@/components/layout/ListLayout.jsx";
+import { GenericList } from "@/components/common/GenericList.jsx";
 import { MediaCard } from "@/modules/media/components/MediaCard.jsx";
-
-import { getNameById } from "@/utils/catalogHelpers";
+ 
+import { getNameById } from "@/utils/catalogHelpers.js";
 
 export const MediaListPage = () => {
     const mediaPromise = mediaServices.getAll();

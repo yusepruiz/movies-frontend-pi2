@@ -1,4 +1,4 @@
-import { MediaForm } from "@/modules/media/components/MediaForm";
+import { MediaForm } from "@/modules/media/components/MediaForm.jsx";
 
 /**
  * Página para la creación de un nuevo medio.

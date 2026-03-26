@@ -1,8 +1,8 @@
-import { useGenreForm } from "@/modules/genre/hooks/useGenreForm";
-import { FormLayout } from "@/components/layout/FormLayout";
-import { FormInput } from "@/components/common/FormInput";
-import { FormSwitch } from "@/components/common/FormSwitch";
-import { FormTextArea } from "@/components/common/FormTextArea";
+import { useGenreForm } from "@/modules/genre/hooks/useGenreForm.js";
+import { FormLayout } from "@/components/layout/FormLayout.jsx";
+import { FormInput } from "@/components/common/FormInput.jsx";
+import { FormSwitch } from "@/components/common/FormSwitch.jsx";
+import { FormTextArea } from "@/components/common/FormTextArea.jsx";
 
 /**
  * Componente de formulario para la creación y actualización de géneros.

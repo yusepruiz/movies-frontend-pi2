@@ -1,4 +1,4 @@
-import { createApiService } from "@/services/apiFactory";
+import { createApiService } from "@/services/apiFactory.js";
 
 /**
  * Servicios para la gestión de tipos de películas.

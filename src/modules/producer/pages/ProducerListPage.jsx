@@ -1,6 +1,6 @@
-import { producerServices } from "@/modules/producer/services/producerServices";
-import { ListLayout } from "@/components/layout/ListLayout";
-import { GenericList } from "@/components/common/GenericList";
+import { producerServices } from "@/modules/producer/services/producerServices.js";
+import { ListLayout } from "@/components/layout/ListLayout.jsx";
+import { GenericList } from "@/components/common/GenericList.jsx";
 
 /**
  * Página de marcador de posición para la gestión de productoras.

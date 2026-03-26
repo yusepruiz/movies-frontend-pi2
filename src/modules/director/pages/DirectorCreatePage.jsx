@@ -1,4 +1,4 @@
-import { DirectorForm } from "@/modules/director/components/DirectorForm";
+import { DirectorForm } from "@/modules/director/components/DirectorForm.jsx";
 
 /**
  * Página para la creación de un nuevo director.

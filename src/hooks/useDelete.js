@@ -1,4 +1,4 @@
-import { alerts } from "@/utils/alerts";
+import { alerts } from "@/utils/alerts.js";
 
 export const useDelete = (deleteFn) => {
     const handleDelete = async (item) => {

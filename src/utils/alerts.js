@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-import { ALERTS_BUTTONS_COLORS, ALERTS_MESSAGES } from "@/constants/constants";
+import { ALERTS_BUTTONS_COLORS, ALERTS_MESSAGES } from "@/constants/constants.js";
 
 export const alerts = {
   // Alerta de éxito (para creación y edición)

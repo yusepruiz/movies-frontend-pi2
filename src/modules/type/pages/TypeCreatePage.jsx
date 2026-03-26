@@ -1,4 +1,4 @@
-import { TypeForm } from "@/modules/type/components/TypeForm";
+import { TypeForm } from "@/modules/type/components/TypeForm.jsx";
 
 /**
  * Página para la creación de un nuevo tipo de película.

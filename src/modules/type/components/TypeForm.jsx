@@ -1,7 +1,7 @@
-import { useTypeForm } from "@/modules/type/hooks/useTypeForm";
-import { FormLayout } from "@/components/layout/FormLayout";
-import { FormInput } from "@/components/common/FormInput";
-import { FormTextArea } from "@/components/common/FormTextArea";
+import { useTypeForm } from "@/modules/type/hooks/useTypeForm.js";
+import { FormLayout } from "@/components/layout/FormLayout.jsx";
+import { FormInput } from "@/components/common/FormInput.jsx";
+import { FormTextArea } from "@/components/common/FormTextArea.jsx";
 
 
 /**

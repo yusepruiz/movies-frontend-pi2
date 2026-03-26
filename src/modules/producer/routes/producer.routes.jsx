@@ -1,6 +1,6 @@
-import { ProducerListPage } from "@/modules/producer/pages/ProducerListPage";
-import { ProducerCreatePage } from "@/modules/producer/pages/ProducerCreatePage";
-import { ProducerUpdatePage } from "@/modules/producer/pages/ProducerUpdatePage";
+import { ProducerListPage } from "@/modules/producer/pages/ProducerListPage.jsx";
+import { ProducerCreatePage } from "@/modules/producer/pages/ProducerCreatePage.jsx";
+import { ProducerUpdatePage } from "@/modules/producer/pages/ProducerUpdatePage.jsx";
 
 /**
  * Definición de las rutas para el módulo de Productores.

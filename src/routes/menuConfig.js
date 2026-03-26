@@ -1,8 +1,8 @@
-import { directorMenu } from "@/modules/director/directorMenu";
-import { genreMenu } from "@/modules/genre/genreMenu";
-import { mediaMenu } from "@/modules/media/mediaMenu";
-import { producerMenu } from "@/modules/producer/producerMenu";
-import { typeMenu } from "@/modules/type/typeMenu";
+import { directorMenu } from "@/modules/director/directorMenu.js";
+import { genreMenu } from "@/modules/genre/genreMenu.js";
+import { mediaMenu } from "@/modules/media/mediaMenu.js";
+import { producerMenu } from "@/modules/producer/producerMenu.js";
+import { typeMenu } from "@/modules/type/typeMenu.js";
 
 
 /**

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { alerts } from "@/utils/alerts";
+import { alerts } from "@/utils/alerts.js";
 
 export const useFormAlerts = (responseState) => {
     useEffect(() => {

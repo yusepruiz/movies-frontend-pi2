@@ -1,7 +1,7 @@
-import { FormLayout } from "@/components/layout/FormLayout";
-import { FormInput } from "@/components/common/FormInput";
-import { FormSwitch } from "@/components/common/FormSwitch";
-import { useDirectorForm } from "@/modules/director/hooks/useDirectorForm";
+import { FormLayout } from "@/components/layout/FormLayout.jsx";
+import { FormInput } from "@/components/common/FormInput.jsx";
+import { FormSwitch } from "@/components/common/FormSwitch.jsx";
+import { useDirectorForm } from "@/modules/director/hooks/useDirectorForm.js";
 
 /**
  * Componente de formulario para la creación y actualización de directores.

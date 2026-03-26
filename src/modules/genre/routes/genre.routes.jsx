@@ -1,6 +1,6 @@
-import { GenreListPage } from "@/modules/genre/pages/GenreListPage";
-import { GenreCreatePage } from "@/modules/genre/pages/GenreCreatePage";
-import { GenreUpdatePage } from "@/modules/genre/pages/GenreUpdatePage";
+import { GenreListPage } from "@/modules/genre/pages/GenreListPage.jsx";
+import { GenreCreatePage } from "@/modules/genre/pages/GenreCreatePage.jsx";
+import { GenreUpdatePage } from "@/modules/genre/pages/GenreUpdatePage.jsx";
 
 
 /**

@@ -1,4 +1,4 @@
-import { GenreForm } from "@/modules/genre/components/GenreForm";
+import { GenreForm } from "@/modules/genre/components/GenreForm.jsx";
 
 /**
  * Página para la creación de un nuevo género.

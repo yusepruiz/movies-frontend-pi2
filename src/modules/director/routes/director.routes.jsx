@@ -1,6 +1,6 @@
-import { DirectorListPage } from "@/modules/director/pages/DirectorListPage";
-import { DirectorCreatePage } from "@/modules/director/pages/DirectorCreatePage";
-import { DirectorUpdatePage } from "@/modules/director/pages/DirectorUpdatePage";
+import { DirectorListPage } from "@/modules/director/pages/DirectorListPage.jsx";
+import { DirectorCreatePage } from "@/modules/director/pages/DirectorCreatePage.jsx";
+import { DirectorUpdatePage } from "@/modules/director/pages/DirectorUpdatePage.jsx";
 
 /**
  * Definición de las rutas para el módulo de Directores.

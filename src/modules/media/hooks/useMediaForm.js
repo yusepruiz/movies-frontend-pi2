@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { useFormState } from "@/hooks/useFormState";
-import { mediaServices } from "../services/mediaServices";
-
+import { useFormState } from "@/hooks/useFormState.js";
+import { mediaServices } from "../services/mediaServices.js";
+ 
 // servicios para llenar los selects
-import { genreServices } from "@/modules/genre/services/genreServices";
-import { directorServices } from "@/modules/director/services/directorServices";
-import { producerServices } from "@/modules/producer/services/producerServices";
-import { typeServices } from "@/modules/type/services/typeServices";
+import { genreServices } from "@/modules/genre/services/genreServices.js";
+import { directorServices } from "@/modules/director/services/directorServices.js";
+import { producerServices } from "@/modules/producer/services/producerServices.js";
+import { typeServices } from "@/modules/type/services/typeServices.js";
 
 const initialFormState = {
     title: "",

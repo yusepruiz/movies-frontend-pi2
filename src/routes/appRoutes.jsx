@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router";
 
-import App from "@/App";
-import { ErrorPage } from "@/components/common/ErrorPage";
-import { directorRoutes } from "@/modules/director/routes/director.routes";
-import { genreRoutes } from "@/modules/genre/routes/genre.routes";
-import { mediaRoutes } from "@/modules/media/routes/media.routes";
-import { producerRoutes } from "@/modules/producer/routes/producer.routes";
-import { typeRoutes } from "@/modules/type/routes/type.routes";
+import App from "@/App.jsx";
+import { ErrorPage } from "@/components/common/ErrorPage.jsx";
+import { directorRoutes } from "@/modules/director/routes/director.routes.jsx";
+import { genreRoutes } from "@/modules/genre/routes/genre.routes.jsx";
+import { mediaRoutes } from "@/modules/media/routes/media.routes.jsx";
+import { producerRoutes } from "@/modules/producer/routes/producer.routes.jsx";
+import { typeRoutes } from "@/modules/type/routes/type.routes.jsx";
 
 /**
  * Configuración central del enrutador de la aplicación.

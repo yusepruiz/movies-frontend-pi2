@@ -1,6 +1,6 @@
-import { genreServices } from "@/modules/genre/services/genreServices";
-import { ListLayout } from "@/components/layout/ListLayout";
-import { GenericList } from "@/components/common/GenericList";
+import { genreServices } from "@/modules/genre/services/genreServices.js";
+import { ListLayout } from "@/components/layout/ListLayout.jsx";
+import { GenericList } from "@/components/common/GenericList.jsx";
 
 /**
  * Página principal del módulo de Géneros.

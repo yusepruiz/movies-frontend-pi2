@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { useFormAlerts } from "@/hooks/useFormAlerts";
+import { useFormAlerts } from "@/hooks/useFormAlerts.js";
 
 /**
  * Componente de diseño para formularios estandarizados.

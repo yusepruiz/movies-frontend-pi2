@@ -1,6 +1,6 @@
-import { MediaListPage } from "@/modules/media/pages/MediaListPage";
-import { MediaCreatePage } from "@/modules/media/pages/MediaCreatePage";
-import { MediaUpdatePage } from "@/modules/media/pages/MediaUpdatePage";
+import { MediaListPage } from "@/modules/media/pages/MediaListPage.jsx";
+import { MediaCreatePage } from "@/modules/media/pages/MediaCreatePage.jsx";
+import { MediaUpdatePage } from "@/modules/media/pages/MediaUpdatePage.jsx";
 /**
  * Definición de las rutas para el módulo de Multimedia.
  */

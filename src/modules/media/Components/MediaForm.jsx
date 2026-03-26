@@ -1,8 +1,8 @@
-import { useMediaForm } from "../hooks/useMediaForm";
-import { FormLayout } from "@/components/layout/FormLayout";
-import { FormInput } from "@/components/common/FormInput";
-import { FormTextArea } from "@/components/common/FormTextArea";
-import { FormSelect } from "@/components/common/FormSelect";
+import { useMediaForm } from "../hooks/useMediaForm.js";
+import { FormLayout } from "@/components/layout/FormLayout.jsx";
+import { FormInput } from "@/components/common/FormInput.jsx";
+import { FormTextArea } from "@/components/common/FormTextArea.jsx";
+import { FormSelect } from "@/components/common/FormSelect.jsx";
 
 /**
  * Componente de formulario para la creación y edición de producciones multimedia.

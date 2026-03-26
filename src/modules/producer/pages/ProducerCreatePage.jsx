@@ -1,4 +1,4 @@
-import { ProducerForm } from "@/modules/producer/components/ProducerForm";
+import { ProducerForm } from "@/modules/producer/components/ProducerForm.jsx";
 
 /**
  * Página para la creación de un nuevo productor.

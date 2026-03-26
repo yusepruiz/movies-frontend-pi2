@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { menuConfig } from '@/routes/menuConfig';
+import { menuConfig } from '@/routes/menuConfig.js';
 
 /**
  * Componente de barra lateral que renderiza el menú de navegación.

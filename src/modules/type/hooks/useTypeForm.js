@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
-import { typeServices } from "@/modules/type/services/typeServices";
-import { useFormState } from "@/hooks/useFormState";
+import { typeServices } from "@/modules/type/services/typeServices.js";
+import { useFormState } from "@/hooks/useFormState.js";
 
 /**
  * Hook personalizado para gestionar la lógica del formulario de tipos de películas.

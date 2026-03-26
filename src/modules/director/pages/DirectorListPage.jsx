@@ -1,6 +1,6 @@
-import { directorServices } from "@/modules/director/services/directorServices";
-import { ListLayout } from "@/components/layout/ListLayout";
-import { GenericList } from "@/components/common/GenericList";
+import { directorServices } from "@/modules/director/services/directorServices.js";
+import { ListLayout } from "@/components/layout/ListLayout.jsx";
+import { GenericList } from "@/components/common/GenericList.jsx";
 
 /**
  * Página principal del módulo de Directores.

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { genreServices } from "@/modules/genre/services/genreServices";
-import { directorServices } from "@/modules/director/services/directorServices";
-import { producerServices } from "@/modules/producer/services/producerServices";
-import { typeServices } from "@/modules/type/services/typeServices";
+import { genreServices } from "@/modules/genre/services/genreServices.js";
+import { directorServices } from "@/modules/director/services/directorServices.js";
+import { producerServices } from "@/modules/producer/services/producerServices.js";
+import { typeServices } from "@/modules/type/services/typeServices.js";
 
 /**
  * Hook personalizado para cargar todos los catálogos necesarios de la aplicación.
