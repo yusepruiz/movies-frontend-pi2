@@ -5,7 +5,7 @@ import { useDelete } from "@/hooks/useDelete";
 
 import { ListLayout } from "@/components/layout/ListLayout";
 import { GenericList } from "@/components/common/GenericList";
-import { MediaCard } from "@/modules/media/components/MediaCard";
+import { MediaCard } from "@/modules/media/components/MediaCard.jsx";
 
 import { getNameById } from "@/utils/catalogHelpers";
 
